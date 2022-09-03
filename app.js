@@ -2,10 +2,17 @@ const express = require('express')
 const app = express()
 app.use(express.json());
 const bodyParser = require("body-parser");
-
-
-
 app.use(bodyParser.urlencoded({ extended: true }));
+var cloudinary = require('cloudinary');
+
+const fileUpload = require("express-fileupload");
+app.use(fileUpload({useTempFiles: true}));
+
+cloudinary.config({
+    cloud_name: process.env.CLOUDINARY_NAME,
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_API_SECRET,
+});
 
 const dotenv = require('dotenv')
 const cookieParser = require('cookie-parser')

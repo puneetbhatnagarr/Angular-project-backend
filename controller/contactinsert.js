@@ -1,8 +1,6 @@
 const contactModel = require("../models/contact.js");
-
-
-// contact area...
 class contactinsert{
+    
     static insertcontact = async(req,res)=>{
     console.log(req.body)
     try{

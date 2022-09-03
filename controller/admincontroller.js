@@ -1,9 +1,10 @@
 const adminModel = require('../models/login.js')
 const bcrypt = require('bcrypt')
 var jwt = require('jsonwebtoken')
+
 class admininsert{
 static adminregistration = async (req, res) => {
-   
+    
     const { name, email, password, password_confirmation } = req.body;
    
     const user = await adminModel.findOne({ email: email });
@@ -19,6 +20,7 @@ static adminregistration = async (req, res) => {
               name: name,
               email: email,
               password: hashPassword,
+             
             });
             await doc.save();
             res
