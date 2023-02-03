@@ -46,7 +46,7 @@ static adminregistration = async (req, res) => {
       const { email, password } = req.body;
       if (email && password) {
         const user = await adminModel.findOne({ email: email });
-        console.log(user)
+        // console.log(user)
         if (user != null) {
           const isMatch = await bcrypt.compare(password, user.password);
           if (user.email === email && isMatch) {
